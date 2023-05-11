@@ -6,9 +6,16 @@ export default createStore({
     data: {
         test: 0
     },
+    getters: {
+        getTest(this: StoreMain) {
+            return this.global.test.value;
+        }
+    },
     methods: {
         incrementTest(this: StoreMain) {
             this.global.test.value++;
+            console.log(this.global.test.value);
+            return this.global.test.value;
         }
     },
     computed: {
@@ -20,5 +27,5 @@ export default createStore({
         array
     }
 }, {
-    defaultModuleName: ""
-})
+    defaultModuleName: "global"
+});

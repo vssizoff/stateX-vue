@@ -1,10 +1,6 @@
 <template>
-<button @click="console.log(store.array.getArray())">get</button>
-<button @click="store.array.addElem(elem++)">add</button>
-<button @click="console.log(store.array.double)">double</button>
-<button @click="console.log(store.array.a())">a</button>
-{{store.test}}
-<button @click="console.log(store)">a</button>
+  {{store.global.test}}
+  <button @click="store.global.incrementTest()">increment</button>
 </template>
 
 <script lang="ts">
