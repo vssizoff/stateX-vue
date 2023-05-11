@@ -1,0 +1,8 @@
+{
+  "name": "statex-vue",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.ts",
+  "author": "sizoff",
+  "license": "ISC"
+}
