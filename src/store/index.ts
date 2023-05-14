@@ -3,6 +3,9 @@ import StoreMain from "@/plugins/stateManager/storeMain";
 import array from "@/store/array";
 
 export default createStore({
+    modules: {
+        array
+    },
     data: {
         test: 0
     },
@@ -23,8 +26,10 @@ export default createStore({
             return this.global.test.value * this.global.test.value;
         }
     },
-    modules: {
-        array
+    watch: {
+        test(newValue: number) {
+            console.log("Variable changed", newValue);
+        }
     }
 }, {
     defaultModuleName: "global"

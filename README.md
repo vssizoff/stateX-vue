@@ -40,7 +40,7 @@ app.mount('#app');
 </template>
 ```
 ### result
-![result0](./result0.png)
+![result0](README/result0.png)
 ## Getters
 ### src/store/index.js
 ```javascript
@@ -63,7 +63,7 @@ export default createStore({
 </template>
 ```
 ### result
-![result1](./result1.png)
+![result1](README/result1.png)
 ## Mutations
 ### src/store/index.js
 ```javascript
@@ -75,7 +75,7 @@ export default createStore({
         incrementTest() {
             this.global.test.value++;
         }
-    },
+    }
 });
 ```
 ### src/App.vue
@@ -86,8 +86,9 @@ export default createStore({
 </template>
 ```
 ### result
-![result2.0](./result2.0.png)
-![result2.1](./result2.1.png)
+![result2.0](README/result2.0.png)
+after click
+![result2.1](README/result2.1.png)
 ## Methods
 ### src/store/index.js
 ```javascript
@@ -101,7 +102,7 @@ export default createStore({
             console.log(this.global.test.value);
             return this.global.test.value;
         }
-    },
+    }
 });
 ```
 ### src/App.vue
@@ -112,5 +113,121 @@ export default createStore({
 </template>
 ```
 ### result
-![result3.0](./result3.0.png)
-![result3.1](./result3.1.png)
+![result3.0](README/result3.0.png)
+after click
+![result3.1](README/result3.1.png)
+## Computed
+### src/store/index.js
+```javascript
+export default createStore({
+    data: {
+        test: 8
+    },
+    computed: {
+        test0() {
+            return this.global.test.value * this.global.test.value;
+        }
+    }
+});
+```
+### src/App.vue
+```vue
+<template>
+  {{store.global.test}}
+  {{store.global.test0}}
+</template>
+```
+### result
+![result4](README/result4.png)
+## Watch
+### src/store/index.js
+```javascript
+export default createStore({
+    data: {
+        test: 0
+    },
+    watch: {
+        test(newValue) {
+            console.log("Variable changed", newValue);
+        }
+    }
+});
+```
+### src/App.vue
+```vue
+<template>
+  {{store.global.test}}
+  <button @click="store.global.test++">Change</button>
+</template>
+```
+### result
+![result5.0](README/result5.0.png)
+after 8 clicks
+![result5.1](README/result5.1.png)
+## Modules
+### src/store/index.js
+```javascript
+import array from "@/store/array";
+
+export default createStore({
+    modules: {
+        array
+    }
+});
+```
+### src/store/array.js
+```javascript
+import { createStoreModule } from "@/plugins/stateManager";
+
+export default createStoreModule({
+    data: {
+        array: ["test", 0, 8, "abcd"]
+    },
+    getters: {
+        getArray() {
+            return this.array.array.value;
+        }
+    },
+    mutations: {
+        addElem(elem: any) {
+            this.array.array.value.push(elem);
+        }
+    },
+    computed: {
+        double() {
+            return [...this.array.array.value, ...this.array.array.value];
+        }
+    },
+    methods: {
+        a() {
+            this.array.array.value = this.array.double.value;
+            return this.array.array.value;
+        }
+    },
+    watch: {
+        array: {
+            handler(newValue) {
+                console.log("Variable changed", newValue);
+            },
+            deep: true
+        }
+    }
+});
+```
+### src/App.vue
+```vue
+<template>
+  {{store.array.array}}
+  <br>
+  {{store.array.getArray()}}
+  <br>
+  {{store.array.double}}
+  <br>
+  <button @click="store.array.addElem(Math.random())">add</button>
+  <button @click="store.array.a()">a</button>
+</template>
+```
+### result
+![img.png](README/result6.0.png)
+![img.png](README/result6.1.png)
+![img.png](README/result6.2.png)

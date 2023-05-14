@@ -1,5 +1,5 @@
 import StoreMain from "@/plugins/stateManager/storeMain";
-import {computedType, moduleType} from "@/plugins/stateManager/types";
+import {computedType, moduleType, watchType} from "@/plugins/stateManager/types";
 import {computed, ref, Ref, watch} from "vue";
 
 export default class StoreModule {
@@ -69,7 +69,16 @@ export default class StoreModule {
         this[name] = data.bind(this.$store);
     }
 
-    $addWatch(name: string, data: (newValue: any) => void) {
-        watch(this.$refs[name], data.bind(this.$store));
+    $addWatch(name: string, data: watchType) {
+        let options = undefined;
+        if (typeof data === "function") {
+            data = data.bind(this.$store);
+        }
+        else if (typeof data === "object") {
+            let {handler, ...option} = data
+            data = handler.bind(this.$store);
+            options = option;
+        }
+        watch(this.$refs[name], data, options);
     }
 }

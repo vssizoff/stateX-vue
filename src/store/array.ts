@@ -3,7 +3,7 @@ import StoreMain from "@/plugins/stateManager/storeMain";
 
 export default createStoreModule({
     data: {
-        array: ["test"]
+        array: ["test", 0, 8, "abcd"]
     },
     getters: {
         getArray(this: StoreMain): Array<any> {
@@ -27,8 +27,11 @@ export default createStoreModule({
         }
     },
     watch: {
-        array(newValue: any): void {
-            console.log(newValue);
+        array: {
+            handler(newValue: Array<any>) {
+                console.log("Variable changed", newValue);
+            },
+            deep: true
         }
     }
 });

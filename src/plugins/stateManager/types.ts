@@ -7,9 +7,14 @@ export type computedType = {[key: string]: {
     set: (newValue: any) => void
 } | (() => any)};
 
+export type watchType = ((newValue: any) => void) | {
+    [key: string]: any,
+    handler: (newValue: any) => void
+};
+
 export type moduleType = {
     data?: (() => {[key: string]: any}) | {[key: string]: any},
-    watch?: {[key: string]: (newValue: any) => void},
+    watch?: {[key: string]: watchType},
     computed?: computedType,
     methods?: {[key: string]: (...args: any) => any},
     mutations?: {[key: string]: (...args: any) => void},
@@ -22,14 +27,14 @@ export type moduleType = {
     // beforeUnmount?: () => void,
     // unmounted?: () => void,
     // deactivated?: () => void
-}
+};
 
 export type moduleRawType = ((store: StoreMain) => moduleType) | moduleType
 
 export type optionsType = {
     modules?: {[key: string]: moduleRawType | StoreModule}
-} & moduleType
+} & moduleType;
 
 export type configType = {
     defaultModuleName?: string
-}
+};

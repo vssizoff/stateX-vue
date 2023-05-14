@@ -1,6 +1,12 @@
 <template>
-  {{store.global.test}}
-  <button @click="store.global.incrementTest()">increment</button>
+  {{store.array.array}}
+  <br>
+  {{store.array.getArray()}}
+  <br>
+  {{store.array.double}}
+  <br>
+  <button @click="store.array.addElem(Math.random())">add</button>
+  <button @click="store.array.a()">a</button>
 </template>
 
 <script lang="ts">
