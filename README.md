@@ -1,6 +1,6 @@
 <h1 align="center">stateX-vue</h1>
 
-# Table of Contents
+## Table of Contents
 > 1. [Init store](#init-store)
 > 2. [Getters](#getters)
 > 3. [Mutations](#mutations)
