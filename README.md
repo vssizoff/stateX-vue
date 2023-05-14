@@ -1,19 +1,20 @@
 <h1 align="center">stateX-vue</h1>
 
 ## Table of Contents
-> 1. [Init store](#init-store)
-> 2. [Getters](#getters)
-> 3. [Mutations](#mutations)
-> 4. [Methods](#methods)
-> 5. [Computed](#computed)
-> 6. [Watch](#watch)
-> 7. [Modules](#modules)
-> 8. [Config](#config)
-# Installation
-* Init node project
+> 1. [Installation](#installation)
+> 2. [Init store](#init-store)
+> 3. [Getters](#getters)
+> 4. [Mutations](#mutations)
+> 5. [Methods](#methods)
+> 6. [Computed](#computed)
+> 7. [Watch](#watch)
+> 8. [Modules](#modules)
+> 9. [Config](#config)
+## Installation
+* Init vue project
 * Type this in console
 ```
-npm i sbackend
+npm i statex-vue
 ```
 ## Init store
 ### src/store/index.js
