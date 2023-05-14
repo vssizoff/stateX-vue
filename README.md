@@ -1,5 +1,20 @@
 <h1 align="center">stateX-vue</h1>
 
+# Table of Contents
+> 1. [Init store](#init-store)
+> 2. [Getters](#getters)
+> 3. [Mutations](#mutations)
+> 4. [Methods](#methods)
+> 5. [Computed](#computed)
+> 6. [Watch](#watch)
+> 7. [Modules](#modules)
+> 8. [Config](#config)
+# Installation
+* Init node project
+* Type this in console
+```
+npm i sbackend
+```
 ## Init store
 ### src/store/index.js
 ```javascript
@@ -231,3 +246,55 @@ export default createStoreModule({
 ![img.png](README/result6.0.png)
 ![img.png](README/result6.1.png)
 ![img.png](README/result6.2.png)
+## Config
+### Name
+#### src/store/index.js
+```javascript
+export default createStore({
+    data: {
+        test: 0
+    }
+}, {
+    name: "store0"
+});
+```
+#### src/App.vue
+```vue
+<template>
+{{store0.global.test}}
+</template>
+```
+### DefaultModuleName
+#### src/store/index.js
+```javascript
+export default createStore({
+    data: {
+        test: 0
+    }
+}, {
+    defaultModuleName: "default"
+});
+```
+#### src/App.vue
+```vue
+<template>
+{{store.default.test}}
+</template>
+```
+### DefaultModuleName = ""
+#### src/store/index.js
+```javascript
+export default createStore({
+    data: {
+        test: 0
+    }
+}, {
+    defaultModuleName: ""
+});
+```
+#### src/App.vue
+```vue
+<template>
+{{store.test}}
+</template>
+```
