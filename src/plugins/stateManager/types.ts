@@ -1,5 +1,5 @@
-import StoreMain from "@/plugins/stateManager/storeMain";
-import StoreModule from "@/plugins/stateManager/storeModule";
+import StoreMain from "./storeMain";
+import StoreModule from "./storeModule";
 // import {ComputedGetter, ComputedSetter} from "vue";
 // import {ComputedGetter, WritableComputedOptions} from "vue";
 

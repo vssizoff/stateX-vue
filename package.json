@@ -1,6 +1,6 @@
 {
   "name": "vue_state_manager",
-  "version": "0.0.0",
+  "version": "0.0.0s0",
   "private": true,
   "scripts": {
     "start": "vue-cli-service serve",
@@ -19,5 +19,15 @@
     "less": "^4.0.0",
     "less-loader": "^8.0.0",
     "typescript": "~4.5.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vssizoff/stateX-vue"
+  },
+  "bugs": {
+    "url": "https://github.com/vssizoff/stateX-vue/issues"
+  },
+  "homepage": "https://github.com/vssizoff/stateX-vue#readme",
+  "readme": "README.md",
+  "keywords": ["vue", "vuex", "store", "state"]
 }

@@ -1,5 +1,5 @@
-import StoreModule from "@/plugins/stateManager/storeModule";
-import {configType, moduleFunctionalType, optionsType} from "@/plugins/stateManager/types";
+import StoreModule from "./storeModule";
+import {configType, moduleFunctionalType, optionsType} from "./types";
 
 export default class StoreMain {
     [prop: string]: any

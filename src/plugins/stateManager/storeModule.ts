@@ -1,7 +1,7 @@
-import StoreMain from "@/plugins/stateManager/storeMain";
-import {computedType, moduleType, watchType} from "@/plugins/stateManager/types";
+import StoreMain from "./storeMain";
+import {computedType, moduleType, watchType} from "./types";
 import {ref, Ref, watch} from "vue";
-import {createComputed} from "@/plugins/stateManager/tsIgnore";
+import {createComputed} from "./tsIgnore";
 
 export default class StoreModule {
     [prop: string]: any

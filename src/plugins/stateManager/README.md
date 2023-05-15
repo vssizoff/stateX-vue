@@ -1,5 +1,7 @@
 <h1 align="center">stateX-vue</h1>
 
+> Full docs [here](https://github.com/vssizoff/stateX-vue#readme)
+> 
 ## Table of Contents
 > 1. [Installation](#installation)
 > 2. [Init store](#init-store)
@@ -55,8 +57,6 @@ app.mount('#app');
 {{store.global.test}}
 </template>
 ```
-### result
-![result0](README/result0.png)
 ## Getters
 ### src/store/index.js
 ```javascript
@@ -78,8 +78,6 @@ export default createStore({
   {{store.global.getTest()}}
 </template>
 ```
-### result
-![result1](README/result1.png)
 ## Mutations
 ### src/store/index.js
 ```javascript
@@ -101,10 +99,6 @@ export default createStore({
   <button @click="store.global.incrementTest()">increment</button>
 </template>
 ```
-### result
-![result2.0](README/result2.0.png)
-after click
-![result2.1](README/result2.1.png)
 ## Methods
 ### src/store/index.js
 ```javascript
@@ -129,9 +123,6 @@ export default createStore({
 </template>
 ```
 ### result
-![result3.0](README/result3.0.png)
-after click
-![result3.1](README/result3.1.png)
 ## Computed
 ### src/store/index.js
 ```javascript
@@ -153,8 +144,6 @@ export default createStore({
   {{store.global.test0}}
 </template>
 ```
-### result
-![result4](README/result4.png)
 ## Watch
 ### src/store/index.js
 ```javascript
@@ -176,10 +165,6 @@ export default createStore({
   <button @click="store.global.test++">Change</button>
 </template>
 ```
-### result
-![result5.0](README/result5.0.png)
-after 8 clicks
-![result5.1](README/result5.1.png)
 ## Modules
 ### src/store/index.js
 ```javascript
@@ -243,10 +228,6 @@ export default createStoreModule({
   <button @click="store.array.a()">a</button>
 </template>
 ```
-### result
-![img.png](README/result6.0.png)
-![img.png](README/result6.1.png)
-![img.png](README/result6.2.png)
 ## Config
 ### Name
 #### src/store/index.js

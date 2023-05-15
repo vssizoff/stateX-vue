@@ -1,8 +1,22 @@
 {
   "name": "statex-vue",
-  "version": "0.0.0",
+  "version": "0.0.0s0",
   "description": "",
   "main": "index.ts",
   "author": "sizoff",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "core-js": "^3.8.3",
+    "vue": "^3.2.13"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vssizoff/stateX-vue"
+  },
+  "bugs": {
+    "url": "https://github.com/vssizoff/stateX-vue/issues"
+  },
+  "homepage": "https://github.com/vssizoff/stateX-vue#readme",
+  "readme": "README.md",
+  "keywords": ["vue", "vuex", "store", "state"]
 }

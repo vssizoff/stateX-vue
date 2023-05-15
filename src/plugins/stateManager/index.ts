@@ -1,7 +1,7 @@
 import {App} from "vue";
-import StoreMain from "@/plugins/stateManager/storeMain";
-import {moduleFunctionalType, moduleType, namedModuleType, optionsType} from "@/plugins/stateManager/types";
-import StoreModule from "@/plugins/stateManager/storeModule";
+import StoreMain from "./storeMain";
+import {moduleFunctionalType, namedModuleType, optionsType} from "./types";
+import StoreModule from "./storeModule";
 
 export type configType = {
     name?: string
