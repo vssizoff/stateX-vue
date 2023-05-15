@@ -1,11 +1,11 @@
-import {createStore} from "@/plugins/stateManager";
+import {bothTypeModules, createStore} from "@/plugins/stateManager";
 import StoreMain from "@/plugins/stateManager/storeMain";
 import array from "@/store/array";
 
 export default createStore({
-    modules: {
+    modules: bothTypeModules({arr: array[1]}, [
         array
-    },
+    ]),
     data: {
         test: 0
     },
@@ -22,8 +22,13 @@ export default createStore({
         }
     },
     computed: {
-        test0(this: StoreMain) {
-            return this.global.test.value * this.global.test.value;
+        test0: {
+            get(this: StoreMain) {
+                return this.global.test.value * this.global.test.value;
+            },
+            set(newValue) {
+                console.log(newValue);
+            }
         }
     },
     watch: {

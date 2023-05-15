@@ -1,6 +1,6 @@
 import {App} from "vue";
 import StoreMain from "@/plugins/stateManager/storeMain";
-import {moduleType, optionsType} from "@/plugins/stateManager/types";
+import {moduleFunctionalType, moduleType, namedModuleType, optionsType} from "@/plugins/stateManager/types";
 import StoreModule from "@/plugins/stateManager/storeModule";
 
 export type configType = {
@@ -33,6 +33,13 @@ export const store: storeType = (app, options) => {
     app.mixin(storeMixin(options.module, options.config || {}));
 };
 
-export function createStoreModule(module: StoreModule | moduleType): StoreModule | moduleType {
-    return module;
+export function createStoreModule(module: StoreModule | moduleFunctionalType, name: string = ""): namedModuleType {
+    return [name, module];
+}
+
+export function bothTypeModules(obj: {[key: string]: moduleFunctionalType}, array: Array<namedModuleType>): Array<namedModuleType> {
+    Object.keys(obj).forEach(key => {
+        array.push([key, obj[key]]);
+    });
+    return array;
 }

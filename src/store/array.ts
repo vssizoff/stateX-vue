@@ -26,12 +26,10 @@ export default createStoreModule({
             return this.array.array.value;
         }
     },
-    watch: {
-        array: {
-            handler(newValue: Array<any>) {
-                console.log("Variable changed", newValue);
-            },
-            deep: true
+    deepWatch: {
+        array(newValue: Array<any>) {
+            console.log("Variable changed", newValue[newValue.length - 1]);
+            console.log(this);
         }
     }
-});
+}, "array");

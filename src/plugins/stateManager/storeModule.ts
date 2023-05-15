@@ -1,6 +1,7 @@
 import StoreMain from "@/plugins/stateManager/storeMain";
 import {computedType, moduleType, watchType} from "@/plugins/stateManager/types";
-import {computed, ref, Ref, watch} from "vue";
+import {ref, Ref, watch} from "vue";
+import {createComputed} from "@/plugins/stateManager/tsIgnore";
 
 export default class StoreModule {
     [prop: string]: any
@@ -40,6 +41,12 @@ export default class StoreModule {
                 this.$addWatch(elem, options.watch[elem]);
             }
         }
+        if (options.deepWatch !== undefined && typeof options.deepWatch === "object"){
+            for (let elem of Object.keys(options.deepWatch)){
+                // @ts-ignore
+                this.$addWatch(elem, typeof options.deepWatch[elem] === "object" ? {...options.deepWatch[elem], deep: true} : {handler: options.deepWatch[elem], deep: true});
+            }
+        }
     }
 
     $addData<Type>(name: string, data: Type) {
@@ -54,7 +61,7 @@ export default class StoreModule {
         })
     }
 
-    $addComputed(name: string, data: any) {
+    $addComputed(name: string, data: computedType) {
         if (typeof data === "function") { data = data.bind(this.$store) }
         else if (typeof data === "object") {
             data = {
@@ -62,7 +69,7 @@ export default class StoreModule {
                 set: data.set.bind(this.$store)
             };
         }
-        this[name] = computed(data);
+        this[name] = createComputed(data);
     }
 
     $addMethod(name: string, data: (...args: any) => any) {

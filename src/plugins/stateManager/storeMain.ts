@@ -1,5 +1,5 @@
 import StoreModule from "@/plugins/stateManager/storeModule";
-import {configType, moduleRawType, optionsType} from "@/plugins/stateManager/types";
+import {configType, moduleFunctionalType, optionsType} from "@/plugins/stateManager/types";
 
 export default class StoreMain {
     [prop: string]: any
@@ -16,20 +16,31 @@ export default class StoreMain {
             delete this[""];
             Object.keys(module).forEach(key => {this[key] = module[key]});
         }
-        if (options.modules !== undefined){
-            for (let module of Object.keys(options.modules)) {
-                this.$addModule(module, options.modules[module]);
+        if (options.modules !== undefined) {
+            if (Array.isArray(options.modules)) {
+                options.modules.forEach(module => {
+                    this.$addModule(...module);
+                });
+            }
+            else {
+                for (let moduleKey of Object.keys(options.modules)) {
+                    this.$addModule(moduleKey, options.modules[moduleKey]);
+                }
             }
         }
     }
 
-    $addModule(name: string, module: moduleRawType | StoreModule) {
+    $addModule(name: string, module: moduleFunctionalType) {
         if (module instanceof StoreModule) {
             this[name] = module;
             return;
         }
         if (typeof module === "function"){
-            module = module(this);
+            module = module.bind(this)(this);
+        }
+        if (module instanceof StoreModule) {
+            this[name] = module;
+            return;
         }
         if (typeof module === "object"){
             this[name] = new StoreModule(this, module);
