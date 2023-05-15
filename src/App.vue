@@ -7,7 +7,7 @@
   <br>
   <button @click="store.array.addElem(Math.random())">add</button>
   <button @click="store.array.a()">a</button>
-  <br>
+  <br><br>
   {{store.arr.array}}
   <br>
   {{store.arr.getArray()}}
@@ -16,7 +16,7 @@
   <br>
   <button @click="store.arr.addElem(Math.random())">add</button>
   <button @click="store.arr.a()">a</button>
-  <br>
+  <br><br>
   <button @click="store.global.test0 = Math.random()">test0</button>
 </template>
 
